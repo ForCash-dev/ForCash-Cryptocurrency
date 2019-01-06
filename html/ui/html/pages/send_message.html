@@ -1,0 +1,46 @@
+<div id="send_message_page" class="page">
+    <div class="section-title">
+        <i class='fa fa-envelope'></i>
+        <h1 data-i18n="send_message">Send Message</h1>
+    </div>
+
+    <section class="content">
+        <div class="modal no-split">
+            <form role="form" id="send_message_form" autocomplete="off">
+                <div class="callout callout-danger error_message" style="display:none"></div>
+                <div class="callout account_info" style="display:none;margin-bottom: 15px;"></div>
+
+                <div data-replace-with-html-template="recipient_modal_template"></div>
+                <div data-replace-with-html-template="add_message_modal_template"></div>
+                <div data-replace-with-html-template="secret_phrase_modal_template"></div>
+                <div data-replace-with-html-template="advanced_modal_template"></div>
+
+                <input type="hidden" name="request_type" value="sendMessage" data-default="sendMessage"/>
+                <input type="hidden" name="converted_account_id" value=""/>
+            </form>
+
+            <div class="section-modal-button">
+                <div class="display_advanced_options advanced_info">
+                    <strong data-i18n="fee">Fee</strong>: <span class="advanced_fee">0.01 FCH</span>
+                    <span style="font-size: 12px;"> (min. 0.01 FCH)</span>
+                </div>
+                <div class="display_advanced_options advanced_info">
+                    <a href="#" data-i18n="advanced">advanced</a>
+                </div>
+            </div>
+
+            <div style="text-align: center" class="main-options">
+                <button type="button" onclick="
+                $('#send_message_form').find('input[name=recipient], input[name=secretPhrase], input[name=referencedTrasactionFullHash], textarea[name=message]').val('');
+                $('#send_message_form').find('.callout').hide();" class="btn section-main cancel-button">
+                    <span data-i18n="cancel">Cancel</span>
+                </button>
+
+                <button data-loading-text="Submitting..." type="button" class="btn btn-primary section-main confirm-button">
+                    <i class="fa fa-paper-plane"></i>
+                    <span data-i18n="send_message;[data-loading-text]submitting">Send Message</span>
+                </button>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,133 @@
+<header class="header">
+    <div class="header-container">
+        <img class="logo" src="../img/logo@2x.png">
+
+        <ul class="nav">
+            <li>
+                <button href="#" class="rounded goto-page" data-page="dashboard">
+                    <i class="fa fa-globe"></i>
+                    <span data-i18n="dashboard">Dashboard</span>
+                </button>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <button class="dropdown-toggle rounded" data-toggle="dropdown">
+                        <i class="fa fa-coins"></i>
+                        <span data-i18n="cryptocurrency">Cryptocurrency</span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <button href="#" class="goto-page rounded" data-page="transactions">
+                                <i class='fa fa-tasks'></i>
+                                <span data-i18n="transactions">Transactions</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button href="#" class="goto-page rounded" data-page="blocks">
+                                <i style="margin-right: 8px;" class='fa fa-align-left'></i>
+                                <span data-i18n="blocks">Blocks</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button href="#" class="goto-page rounded" data-page="peers">
+                                <i style="margin-right: 3px;" class='fa fa-user-friends'></i>
+                                <span data-i18n="peers">Peers</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <button class="dropdown-toggle rounded" data-toggle="dropdown">
+                        <i class="fa fa-users"></i>
+                        <span data-i18n="communication">Communication</span>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <button href="#" class="goto-page rounded" data-page="contacts">
+                                <i style="margin-right: 3px;" class='fa fa-users'></i>
+                                <span data-i18n="contacts">Contacts</span>
+                            </button>
+                        </li>
+
+                        <li>
+                            <button href="#" class="goto-page rounded" data-page="messages">
+                                <i style="margin-right: 7px;" class='fa fa-envelope'></i>
+                                <span data-i18n="messages">Messages</span>
+                            </button>
+                        </li>
+
+                        <li>
+                            <button href="#" class="goto-page rounded" data-page="aliases">
+                                <i class='fa fa-user-friends'></i>
+                                <span data-i18n="aliases">Aliases</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <button class="rounded goto-page" data-page="settings">
+                    <i class="fa fa-wrench"></i>
+                    <span data-i18n="settings">Settings</span>
+                </button>
+            </li>
+
+            <li>
+                <div class="dropdown">
+                    <button class="dropdown-toggle rounded color-orange" data-toggle="dropdown">
+                        <i class="fa fa-paper-plane"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-right color-orange">
+                        <li>
+                            <button href="#" class="goto-page rounded color-orange" data-page="send_coins">
+                                <span data-i18n="send_coins">Send Coins</span>
+                            </button>
+                        </li>
+
+                        <li>
+                            <button href="#" class="goto-page rounded color-orange" data-page="send_message">
+                                <span data-i18n="send_message">Send Message</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <div id="logout_dropdown_menu" class="dropdown">
+                    <button class="dropdown-toggle rounded color-red" data-toggle="dropdown">
+                        <i class="fa fa-power-off"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+
+                    <ul style="min-width: 250px" class="dropdown-menu dropdown-menu-right color-red">
+                        <li id="logout">
+                            <button class="rounded color-red" role="menuitem" tabindex="-1" href="#"
+                                    onclick="NRS.logout()" data-i18n="logout">
+                                Log Out
+                            </button>
+                        </li>
+
+                        <li id="logout_forging">
+                            <button class="rounded color-red" role="menuitem" tabindex="-1" href="#"
+                                    onclick="NRS.logout(true)" data-i18n="logout_stop_forging">
+                                Log Out &amp; Stop Forging
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="207px" height="54px" viewBox="0 0 207 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Forcash/logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-48.9%" y="-56.6%" width="197.7%" height="213.2%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <text id="text-2" font-family="HelveticaNeue-CondensedBold, Helvetica Neue" font-size="45" font-style="condensed" font-weight="bold" letter-spacing="-0.140000001">
+            <tspan x="49" y="43" fill="#FFFFFF">For</tspan>
+            <tspan x="105.1" y="43" fill="#DEE8E2">Cas</tspan>
+            <tspan x="170.47" y="43" fill="#DEE8E2">h</tspan>
+        </text>
+        <filter x="-9.4%" y="-19.8%" width="118.8%" height="150.9%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo" transform="translate(-7.000000, -22.000000)" fill="#FFFFFF">
+            <g id="Forcash/logo" transform="translate(15.000000, 21.000000)">
+                <g id="Icon" filter="url(#filter-1)" transform="translate(0.000000, 5.000000)">
+                    <rect id="Rectangle" x="0" y="28" width="8" height="10"></rect>
+                    <rect id="Rectangle" x="11" y="22" width="8" height="16"></rect>
+                    <rect id="Rectangle" x="22" y="16" width="8" height="22"></rect>
+                    <rect id="Rectangle" x="33" y="12" width="8" height="26"></rect>
+                    <polygon id="Triangle" points="37 0 44 13 30 13"></polygon>
+                </g>
+                <g id="ForCash Wallet" fill-opacity="1">
+                    <use filter="url(#filter-3)" xlink:href="#text-2"></use>
+                    <use xlink:href="#text-2"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

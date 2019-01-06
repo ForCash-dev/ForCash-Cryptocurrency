@@ -1,0 +1,152 @@
+<div id="send_coins_page" class="page">
+    <div class="section-title">
+        <i class='fa fa-paper-plane'></i>
+        <h1 data-i18n="send_coins">Send Coins</h1>
+    </div>
+
+    <section class="content">
+        <div class="split-right">
+            <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box">
+                        <p><span data-i18n="recommended_fee">Recommended Fee</span><span> (FCH)</span></p>
+                        <div class="inner inner-smaller">
+                            <h3>0.01</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-xs-6">
+                    <div class="small-box">
+                        <p data-i18n="confirmation_time">Confirmation Time</p>
+                        <div class="inner inner-smaller">
+                            <h3><span id="send_coins_confirmation_time" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="data-container data-loading" data-no-padding="true"
+                         data-extra="#dashboard_transactions_footer">
+                        <div class="table-title table-title-margin">
+                            <span data-i18n="recent_transactions">Recent Transactions</span>
+                            <button class="table-title-button goto-page" data-page="transactions">
+                                <span data-i18n="show_all">(show all)</span>
+                            </button>
+                        </div>
+                        <table class="table table-striped" id="send_coins_transactions_table">
+                            <thead>
+                            <tr>
+                                <th data-i18n="transaction_id" style="width:1%">Transaction ID</th>
+                                <th style="text-align: center" data-i18n="message">Message</th>
+                                <th style="text-align: center" data-i18n="type">Type</th>
+                                <th style="text-align: center" data-i18n="amount">Amount</th>
+                                <th style="text-align: center;padding-right: 20px !important;" data-i18n="fee">Fee</th>
+                                <th style="text-align: center" data-i18n="date">Date</th>
+                                <th data-i18n="account">Account</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <div class="data-loading-container">
+                            <img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32"/>
+                        </div>
+
+                        <div class="data-empty-container">
+                            <p data-i18n="no_transactions_yet">No transactions yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal split-left">
+            <div class="form-warning callout callout-info" style="display: none">
+                <div class="amount-warning" style="display: none; margin-bottom: 15px">
+                    <div>
+                        <span data-i18n="send_fch_current_amount">Current amount</span>: <strong style="color: #b70000"
+                                                                                                 class="current-amount"></strong>
+                    </div>
+                    <div style="margin-top: 5px">
+                        <span data-i18n="send_fch_warning_amount">Warning amount</span>: <strong
+                            class="warning-amount"></strong>
+                        <i style="vertical-align: top; margin-top: 3px;" class="fa fa-question-circle"
+                           data-toggle="tooltip"
+                           data-placement="right" title="This value can be changed in settings"></i>
+                    </div>
+                </div>
+                <div class="fee-warning" style="display: none">
+                    <div>
+                        <span data-i18n="send_fch_current_fee">Current fee</span>: <strong style="color: #b70000"
+                                                                                           class="current-fee"></strong>
+                    </div>
+                    <div style="margin-top: 5px">
+                        <span data-i18n="send_fch_warning_fee">Warning fee</span>: <strong class="warning-fee"></strong>
+                        <i style="vertical-align: top; margin-top: 3px;" class="fa fa-question-circle"
+                           data-toggle="tooltip"
+                           data-placement="right" title="This value can be changed in settings"></i>
+                    </div>
+                </div>
+            </div>
+            <form id="send-coins-form" role="form" autocomplete="off">
+                <div class="callout callout-danger error_message" style="display:none"></div>
+                <div class="callout account_info" style="display:none;margin-bottom: 15px;"></div>
+
+                <div data-replace-with-html-template="recipient_modal_template"></div>
+
+                <div class="row row-margins">
+                    <div class="form-group">
+                        <label for="send_money_amount" data-i18n="amount">AMOUNT</label>
+                        <div class="input-group">
+                            <input type="number" name="amountFCH" id="send_money_amount" step="any" min="0"
+                                   class="form-control " placeholder="Amount" data-i18n="[placeholder]amount"
+                                   tabindex="3">
+                            <span class="input-group-btn btn-group recipient_selector">
+                                    <button style="width: 60px; height: 34px; margin-right: 0px;" type="button"
+                                            class="btn btn-default dropdown-toggle"><span>FCH</span></button>
+                                    <ul class="dropdown-menu scrollable-menu" role="menu"
+                                        style="right:0;left:auto;"></ul>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-replace-with-html-template="add_message_modal_template"></div>
+                <div data-replace-with-html-template="secret_phrase_modal_template"></div>
+                <div data-replace-with-html-template="advanced_modal_template"></div>
+
+                <input type="hidden" name="request_type" value="sendMoney" data-default="sendMoney"/>
+                <input type="hidden" name="converted_account_id" value=""/>
+                <input type="hidden" name="merchant_info" value="" data-default=""/>
+            </form>
+
+            <div class="section-modal-button">
+                <div class="display_advanced_options advanced_info">
+                    <strong data-i18n="fee">Fee</strong>: <span class="advanced_fee">0.01 FCH</span>
+                    <span style="font-size: 12px;"> (min. 0.01 FCH)</span>
+                </div>
+                <div class="display_advanced_options advanced_info">
+                    <a href="#" data-i18n="advanced">advanced</a>
+                </div>
+            </div>
+
+            <div style="text-align: center" class="main-options">
+                <button type="button" onclick="
+                $('#send-coins-form').find('input[name=recipient], input[name=amountFCH], input[name=secretPhrase], input[name=referencedTrasactionFullHash], textarea[name=message]').val('');
+                 $('#send_coins_page').find('.callout').hide();" class="btn section-main cancel-button">
+                    <span data-i18n="cancel">Cancel</span>
+                </button>
+
+                <button data-loading-text="Submitting..." type="button"
+                        class="btn btn-primary section-main confirm-button">
+                    <i class="fa fa-paper-plane"></i>
+                    <span data-i18n="send_fch;[data-loading-text]submitting">Send</span>
+                </button>
+            </div>
+        </div>
+    </section>
+</div>

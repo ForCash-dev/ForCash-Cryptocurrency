@@ -1,0 +1,109 @@
+<div id="blocks_page" class="paginated page">
+    <div class="section-title">
+        <i class='fa fa-align-left'></i>
+        <h1 data-i18n="blocks">Blocks</h1>
+    </div>
+
+    <div class="main-options">
+        <div class="btn-group">
+            <button type="button" class="in-page rounded dropdown-toggle" data-toggle="dropdown">
+                <span class="text" data-i18n="all_blocks">All Blocks</span> <span class="caret"></span>
+            </button>
+
+            <ul id="blocks_page_type" class="dropdown-menu" role="menu">
+                <li>
+                    <button class="in-page rounded" href="#" data-type="">
+                        <span data-i18n="all_blocks">All Blocks</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="in-page rounded" href="#" data-type="forged_blocks">
+                        <span data-i18n="forged_by_you">Forged By You</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box">
+                    <p data-i18n="avg_amount_per_block">Avg. Amount Per Block</p>
+                    <div class="inner inner-smaller">
+                        <h3><span id="blocks_average_amount" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box">
+                    <p data-i18n="avg_fee_per_block">Avg. Fee Per Block</p>
+                    <div class="inner inner-smaller">
+                        <h3><span id="blocks_average_fee" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6" id="blocks_transactions_per_hour_box">
+                <div class="small-box">
+                    <p data-i18n="transactions_per_hour">Transactions Per Hour</p>
+                    <div class="inner inner-smaller">
+                        <h3><span id="blocks_transactions_per_hour" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6" id="blocks_generation_time_box">
+                <div class="small-box">
+                    <p data-i18n="block_generation_time">Block Generation Time</p>
+                    <div class="inner inner-smaller">
+                        <h3><span id="blocks_average_generation_time" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-lg-3 col-xs-6" id="forged_blocks_total_box">
+                <div class="small-box bg-main">
+                    <div class="inner inner-smaller">
+                        <h3><span id="forged_blocks_total"
+                                  class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
+                        <p data-i18n="nr_forged_blocks"># Forged Blocks</p>
+                    </div>
+                    <div class="small-box-footer"></div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6" id="forged_fees_total_box">
+                <div class="small-box bg-main">
+                    <div class="inner inner-smaller">
+                        <h3><span id="forged_fees_total" class="loading_dots"><span>.</span><span>.</span><span>.</span></span>
+                        </h3>
+                        <p data-i18n="forged_fees_total">Forged Fees Total</p>
+                    </div>
+                    <div class="small-box-footer"></div>
+                </div>
+            </div>-->
+        </div>
+
+        <div class="data-container data-loading">
+            <div class="table-title table-title-margin" data-i18n="blocks">Blocks</div>
+            <table class="table table-striped" id="blocks_table">
+                <thead>
+                <tr>
+                    <th data-i18n="height">Height</th>
+                    <th data-i18n="date">Date</th>
+                    <th data-i18n="amount">Amount</th>
+                    <th data-i18n="fee">Fee</th>
+                    <th data-i18n="nr_tx">Nr TX</th>
+                    <th data-i18n="generator">Generator</th>
+                    <th data-i18n="payload">Payload</th>
+                    <th data-i18n="base_target">Base Target</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32"
+                                                     height="32"/></div>
+            <div class="data-empty-container" data-i18n="no_blocks_found">No blocks found.</div>
+        </div>
+        <div class="data-pagination"></div>
+    </section>
+</div>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="40px" viewBox="0 0 46 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>ForCash Wallet/icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-9.1%" y="-10.5%" width="118.2%" height="121.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" transform="translate(-10.000000, -8.000000)" fill="#FFFFFF">
+            <g id="ForCash Wallet/icon" filter="url(#filter-1)" transform="translate(11.000000, 8.000000)">
+                <rect id="Rectangle" x="0" y="28" width="8" height="10"></rect>
+                <rect id="Rectangle" x="11" y="22" width="8" height="16"></rect>
+                <rect id="Rectangle" x="22" y="16" width="8" height="22"></rect>
+                <rect id="Rectangle" x="33" y="12" width="8" height="26"></rect>
+                <polygon id="Triangle" points="37 0 44 13 30 13"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

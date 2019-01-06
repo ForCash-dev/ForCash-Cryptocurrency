@@ -1,0 +1,71 @@
+<div id="transactions_page" class="paginated page">
+    <div class="section-title">
+        <i class='fa fa-tasks'></i>
+        <h1 data-i18n="transactions">Transactions</h1>
+    </div>
+
+    <div class="main-options">
+        <div class="btn-group">
+            <button type="button" class="in-page rounded dropdown-toggle" data-toggle="dropdown">
+                <span class="text" data-i18n="all_transactions">All Transactions</span> <span class="caret"></span>
+            </button>
+            <ul id="transactions_page_type" class="dropdown-menu" role="menu">
+                <li>
+                    <button class="in-page rounded" href="#" data-type="" data-i18n="all_transactions"><span>All Transactions</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="in-page rounded" href="#" data-type="0:0" data-i18n="ordinary_payment">Ordinary
+                        Payment
+                    </button>
+                </li>
+                <li>
+                    <button class="in-page rounded" href="#" data-type="1:0" data-i18n="arbitrary_message">Arbitrary
+                        Message
+                    </button>
+                </li>
+                <li>
+                    <button class="in-page rounded" href="#" data-type="1:5" data-i18n="account_info">Account Info
+                    </button>
+                </li>
+                <li>
+                    <button class="in-page rounded" href="#" data-type="4:0" data-i18n="balance_leasing">Balance
+                        Leasing
+                    </button>
+                </li>
+                <li>
+                    <button class="in-page rounded" href="#" data-type="unconfirmed"
+                            data-i18n="unconfirmed_transactions">Unconfirmed Transactions
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="data-container data-loading">
+            <div class="table-title" data-i18n="transactions">Transactions</div>
+            <table class="table table-striped" id="transactions_table">
+                <thead>
+                <tr>
+                    <th data-i18n="transaction_id" style="width:1%">Transaction ID</th>
+                    <th style="text-align: center" data-i18n="message">Message</th>
+                    <th style="text-align: center" data-i18n="type">Type</th>
+                    <th style="text-align: center" data-i18n="amount">Amount</th>
+                    <th style="text-align: center;padding-right: 20px !important;" data-i18n="fee">Fee</th>
+                    <th style="text-align: center" data-i18n="date">Date</th>
+                    <th data-i18n="account">Account</th>
+                    <th data-i18n="confirmations">Confirmations</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32"
+                                                     height="32"/></div>
+            <div class="data-empty-container"><p data-i18n="no_transactions_found">No transactions found.</p></div>
+        </div>
+        <div class="data-pagination"></div>
+    </section>
+</div>

@@ -1,0 +1,73 @@
+<div id="aliases_page" class="paginated page">
+    <div class="section-title">
+        <i class="fa fa-user-friends"></i>
+        <h1 data-i18n="aliases">Aliases</h1>
+    </div>
+
+    <div class="main-options">
+        <button id="add_peer_button" type="button" class="section-main" data-toggle="modal" data-target="#register_alias_modal">
+            <i class="fa fa-plus"></i>
+            <span data-i18n="register_alias">Register Alias</span>
+        </button>
+    </div>
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box">
+                    <p data-i18n="aliases_owned">Aliases Owned</p>
+                    <div class="inner inner-smaller">
+                        <h3><span id="alias_count" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
+                    </div>
+                    <div class="small-box-footer"></div>
+                </div>
+            </div>
+            <!--<div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-main">
+                    <div class="inner inner-smaller">
+                        <h3><span id="empty_alias_count" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
+                        <p data-i18n="empty_aliases">Empty Aliases</p>
+                    </div>
+                    <div class="small-box-footer"></div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-main">
+                    <div class="inner inner-smaller">
+                        <h3><span id="alias_uri_count" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
+                        <p data-i18n="aliases_to_uri">Aliases to URI</p>
+                    </div>
+                    <div class="small-box-footer"></div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+                <div class="small-box bg-main">
+                    <div class="inner inner-smaller">
+                        <h3><span id="alias_account_count" class="loading_dots"><span>.</span><span>.</span><span>.</span></span></h3>
+                        <p data-i18n="aliases_to_account_id">Aliases to Account ID</p>
+                    </div>
+                    <div class="small-box-footer"></div>
+                </div>
+            </div>-->
+        </div>
+
+        <div class="data-container data-loading">
+            <div class="table-title table-title-margin" data-i18n="aliases">Aliases</div>
+            <table class="table table-striped" id="aliases_table">
+                <thead>
+                <tr>
+                    <th data-i18n="alias">Alias</th>
+                    <th data-i18n="uri">URI</th>
+                    <th data-i18n="status" style="width:5%">Status</th>
+                    <th data-i18n="actions" style="width:10%">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32" height="32" /></div>
+            <div class="data-empty-container"><p data-i18n="[html]no_aliases_yet">No aliases yet</p></div>
+        </div>
+        <div class="data-pagination"></div>
+    </section>
+</div>

@@ -1,0 +1,202 @@
+<div id="lockscreen" class="lockscreen-flex-container">
+    <div class="lockscreen-flex-items">
+        <img class="logo" src="../img/logo@2x.png">
+
+        <div id="login_panel">
+            <input id="login_password"
+                   type="password"
+                   class="form-control rounded rounded-background-white rounded-large-container"
+                   name="login_password"
+                   placeholder="Enter your passphrase"
+                   data-i18n="[placeholder]enter_your_passphrase"/>
+
+            <div id="remember-passphrase-container" class="rounded rounded-background-grey rounded-small-container">
+                <label class="switch">
+                    <input name="remember_password" id="remember_password" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+
+                <label for="remember_password" data-i18n="remember_passphrase_during_session">
+                    Remember my passphrase during session
+                </label>
+            </div>
+
+            <button onclick="NRS.login($('#login_password').val())"
+                    class="rounded rounded-background-green rounded-middle-container">
+                <i class="fa fa-sign-in-alt"></i>
+                <span data-i18n="log_in">Log in</span>
+            </button>
+
+            <button onclick="NRS.registerAccount()"
+                    class="rounded rounded-background-orange rounded-middle-container"
+                    data-i18n="new_q_create_account">
+
+            </button>
+        </div>
+
+        <div id="account_phrase_generator_panel" class="rounded rounded-background-white">
+            <div class="panel-body">
+                <div id="account_phrase_generator_loading">
+                    <p><span class="loading_text" data-i18n="loading_word_list">Loading Word List</span><span
+                            class="loading_dots"><span>.</span><span>.</span><span>.</span></span></p>
+
+                    <div style="text-align:center;margin-top:20px;margin-bottom:20px;"><img
+                            src="img/loading_indicator.gif" alt="Loading..." width="32" height="32"/></div>
+                </div>
+
+                <div id="account_phrase_generator_loaded">
+                    <div class="step_1 account_phrase_generator_steps">
+                        <div id="account_phrase_generator_seeder" class="seeder">
+                            <p data-i18n="seed_password_generator">Move your cursor around to seed the random number
+                                generator...</p>
+                            <div class="progress progress-striped">
+                                <div class="progress-bar progress-bar-info"
+                                     id="account_phrase_generator_seed_progress" role="progressbar"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                                    <span class="sr-only">0% Seeded</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align:right">
+                            <button class="rounded rounded-background-grey" id="registration_cancel"
+                                    onclick="NRS.showLoginScreen();return false;" data-i18n="cancel">Cancel
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="step_2 account_phrase_generator_steps">
+                        <div id="account_phrase_generator_start">
+                            <p><span
+                                    data-i18n="generating_passphrase_wait">Generating your passphrase. Please wait</span><span
+                                    class="loading_dots"><span>.</span><span>.</span><span>.</span></span></p>
+
+                            <div style="text-align:center;margin-top:20px;margin-bottom:20px;"><img
+                                    src="img/loading_indicator.gif" alt="Loading..." width="32" height="32"/></div>
+                        </div>
+
+                        <div id="account_phrase_generator_stop" style="display:none">
+                            <p data-i18n="automatically_generated_passphrase_is">Your automatically generated
+                                passphrase is:</p>
+
+                            <textarea style="width:100%;height:50px;margin-bottom:10px;padding:3px;" rows="2"
+                                      readonly></textarea>
+
+                            <a class="registration-link" href="#" onclick="NRS.registerUserDefinedAccount();"
+                               data-i18n="choose_own_passphrase">Want to choose your own passphrase? Click here.</a>
+
+                            <p data-i18n="memorize_passphrase_help">Please write down or memorize these 12 words
+                                (their order and capitalization matters - always lowercase). This passphrase is
+                                needed in order to access your FCH account.</p>
+
+                            <div class="callout callout-danger" data-i18n="[html]passphrase_disclosure_warning">
+                                <strong>Attention:</strong> Don't ever disclose your passphrase. If you lose it you
+                                lose access to your account!
+                            </div>
+
+                            <div style="text-align:right">
+                                <input type="submit"
+                                       class="rounded rounded-background-orange"
+                                       value="Next" data-i18n="[value]next"
+                                       onclick="$('.step_2').hide();$('.step_3').show();return false;"/>
+
+                                <button class="rounded rounded-background-grey"
+                                        id="registration_cancel" onclick="NRS.showLoginScreen();return false;"
+                                        data-i18n="cancel">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step_3 account_phrase_generator_steps">
+                        <p data-i18n="passphrase_write_below">Your passphrase is very important! In order to be sure
+                            that you have saved it, please write your passphrase below:</p>
+
+                        <div class="callout callout-danger" style="display:none"
+                             data-i18n="incorrectly_typed_passphrase">You have not typed the passphrase correctly,
+                            please try again!
+                        </div>
+
+                        <textarea style="width:100%;height:50px;margin-bottom:10px;" rows="2"></textarea>
+
+                        <div style="text-align:right">
+                            <input type="submit" class="rounded rounded-background-orange" value="Next"
+                                   data-i18n="[value]next"
+                                   onclick="NRS.verifyGeneratedPassphrase();return false;"/>
+
+                            <button
+                                    class="rounded rounded-background-grey" id="registration_cancel"
+                                    onclick="NRS.showLoginScreen();return false;" data-i18n="cancel">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" id="account_phrase_custom_panel" style="display:none;max-width:500px;">
+            <div class="panel-body">
+                <form class="form-horizontal" role="form" method="post" autocomplete="off">
+                    <div class="callout callout-info">
+                        <span data-i18n="passphrase_length_warning">Your passphrase must be at least 35 characters long.</span>
+                    </div>
+
+                    <div class="callout callout-danger" data-i18n="[html]passphrase_warning">
+                        <strong>Attention</strong>: The passphrase is everything that stands between your account
+                        and the rest of the world. Do not use any meaningful sentence, especially any that appears
+                        in song or literature.<br/><br/>Don't ever disclose your passphrase. If you lose it you lose
+                        access to your account!
+                    </div>
+
+                    <div style="margin-right: -10px" class="form-group">
+                        <label for="registration_password" class="col-sm-3 control-label"
+                               data-i18n="passphrase">Passphrase</label>
+                        <div class="col-sm-9"><input type="password" name="registration_password"
+                                                     class="form-control" id="registration_password"
+                                                     placeholder=""/></div>
+                    </div>
+                    <div style="margin-right: -10px" class="form-group">
+                        <label for="registration_password_repeat" class="col-sm-3 control-label"
+                               data-i18n="repeat">Repeat</label>
+                        <div class="col-sm-9">
+                            <input type="password"
+                                   name="registration_password_repeat"
+                                   class="form-control"
+                                   id="registration_password_repeat"
+                                   placeholder=""/>
+                        </div>
+                    </div>
+
+                    <div style="text-align:right">
+                        <input type="submit"
+                               class="rounded rounded-background-orange"
+                               value="Register"
+                               data-i18n="[value]register"/>
+
+                        <button
+                                class="rounded rounded-background-grey" id="registration_cancel"
+                                onclick="NRS.showLoginScreen();" data-i18n="cancel">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <div style="display: none" id="old_browser_warning" class="lockscreen-bottom-info">
+                <span class="callout callout-danger">You are using an old browser which this application does not support.</span>
+            </div>
+
+            <div style="display: none" id="testnet_login" class="lockscreen-bottom-info">
+                <span class="callout callout-danger" data-i18n="[html]testnet_login_warning">Log in with your <strong>TestNet</strong> account - not your real one!</span>
+            </div>
+
+            <div style="display: none" id="login_error" class="lockscreen-bottom-info">
+                <div class="callout callout-danger"></div>
+            </div>
+        </div>
+    </div>
+</div>

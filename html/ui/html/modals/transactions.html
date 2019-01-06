@@ -1,0 +1,185 @@
+<div class="modal fade" id="transaction_info_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close modal-button-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+            <div class="section-modal-header">
+                <h1 class="section-modal-title" data-i18n="transaction_info">Transaction Info</h1>
+                <strong>
+                    <span data-i18n="transaction_number">Transaction no. </span>
+                    <span class="section-modal-description" id="transaction_info_modal_transaction"></span>
+                </strong>
+            </div>
+
+            <div class="modal-body">
+                <div class="btn-group">
+                    <button type="button" class="in-page rounded dropdown-toggle" data-toggle="dropdown">
+                        <span class="text" data-i18n="account_details">Account Details</span> <span
+                            class="caret"></span>
+                    </button>
+
+                    <ul class="nav modal-nav dropdown-menu" role="menu">
+                        <li data-tab="transaction_info_tab">
+                            <button class="in-page rounded" href="#">
+                                <span data-i18n="account_details">Account Details</span>
+                            </button>
+                        </li>
+                        <li data-tab="transaction_info_details_tab">
+                            <button class="in-page rounded" href="#">
+                                <span data-i18n="transaction_details">Transaction Details</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tabbable">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="transaction_info_tab">
+                            <div id="transaction_info_callout" class="callout callout-info" style="display:none;"></div>
+
+                            <div id="transaction_info_output_top" style="margin-bottom: 10px; display: none;"></div>
+
+                            <table class="table table-striped" id="transaction_info_table" style="display:none;margin-bottom: 0;">
+                                <tbody class="modal-tbody">
+
+                                </tbody>
+                            </table>
+
+                            <div id="transaction_info_output_bottom" style="display: none;margin-top:10px;"></div>
+                            <div id="transaction_info_bottom" style="display: none;"></div>
+                        </div>
+                        <div class="tab-pane" id="transaction_info_actions_tab">
+                            <div class="row">
+                                <div class="col-xs-8 col-md-8" style="margin-left:auto;margin-right:auto;float:none;">
+                                    <button type="button" class="goto-page btn btn-default btn-lg btn-block" data-page="send_money" data-account="" data-i18n="send_fch_to_sender">Send FCH to Sender</button>
+                                    <button type="button" class="goto-page btn btn-default btn-lg btn-block" data-toggle="send_message" data-account="" data-i18n="send_message_to_sender">Send Message to Sender</button>
+                                    <button type="button" id="transaction_info_modal_add_as_contact" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#add_contact_modal" data-account="" data-i18n="add_sender_as_contact">Add Sender as Contact</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="transaction_info_details_tab" style="max-height:350px;overflow:auto;">
+                            <table class="table table-striped" id="transaction_info_details_table" style="margin-bottom:0;table-layout:fixed;">
+                                <tbody class="modal-tbody">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-modal-button">
+                <button style="float: right; margin-right: 25px;" type="button" class="btn btn-default modal-button" data-dismiss="modal" data-i18n="close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="raw_transaction_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close modal-button-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+            <div class="section-modal-header">
+                <h1 class="section-modal-title" data-i18n="raw_transaction_details">Raw Transaction Details</h1>
+            </div>
+
+            <div class="modal-body">
+                <label data-i18n="unsigned_transaction_bytes">UNSIGNED TRANSACTION BYTES</label>
+                <div class="form-group">
+                    <textarea class="form-control" id="raw_transaction_modal_unsigned_transaction_bytes" rows="4"></textarea>
+                </div>
+                <label data-i18n="signed_transaction_bytes">SIGNED TRANSACTION BYTES</label>
+                <div class="form-group">
+                    <textarea class="form-control" id="raw_transaction_modal_transaction_bytes" rows="4"></textarea>
+                </div>
+                <div id="raw_transaction_modal_full_hash_container">
+                    <label data-i18n="full_transaction_hash">FULL TRANSACTION HASH</label>
+                    <div class="form-group">
+                        <textarea class="form-control" id="raw_transaction_modal_full_hash" rows="1"></textarea>
+                    </div>
+                </div>
+                <div id="raw_transaction_modal_signature_hash_container">
+                    <label data-i18n="signature_hash">SIGNATURE HASH</label>
+                    <div class="form-group">
+                        <textarea class="form-control" id="raw_transaction_modal_signature_hash" rows="1"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="section-modal-button">
+                <button type="button" class="btn btn-default modal-button" data-dismiss="modal" data-i18n="close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-no-hide" id="transaction_operations_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close modal-button-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+            <div class="section-modal-header">
+                <h1 class="section-modal-title" data-i18n="advanced_transaction_operations">Advanced Transaction Operations</h1>
+            </div>
+
+            <div class="modal-body">
+                <ul class="nav nav-pills nav-justified" style="margin-bottom:10px">
+                    <li class="active" id="broadcast_transaction_nav" data-tab="broadcast_transaction"><a href="#" data-i18n="broadcast_transaction">Broadcast Transaction</a></li>
+                    <li data-tab="parse_transaction"><a href="#" data-i18n="parse_transaction">Parse Transaction</a></li>
+                    <li data-tab="calculate_full_hash"><a href="#" data-i18n="calculate_full_hash">Calculate Full Hash</a></li>
+                </ul>
+
+                <div id="transaction_operations_modal_broadcast_transaction" class="tab_content" style="display:none">
+                    <form role="form" id="broadcast_transaction_form" autocomplete="off">
+                        <div class="callout callout-danger error_message" style="display:none"></div>
+                        <div class="form-group">
+                            <label for="broadcast_transaction_transaction_bytes" data-i18n="transaction_bytes">TRANSACTION BYTES</label>
+                            <textarea class="form-control" name="transactionBytes" id="broadcast_transaction_transaction_bytes" rows="4" placeholder="Signed Transaction Bytes" data-i18n="[placeholder]signed_transaction_bytes"></textarea>
+                        </div>
+                        <input type="hidden" name="request_type" value="broadcastTransaction" />
+                    </form>
+                 </div>
+
+                <div id="transaction_operations_modal_parse_transaction" class="tab_content" style="display:none">
+                    <form role="form" id="parse_transaction_form" autocomplete="off">
+                        <div class="callout callout-danger error_message" style="display:none"></div>
+                        <div class="form-group">
+                            <label for="parse_transaction_transaction_bytes" data-i18n="transaction_bytes">TRANSACTION BYTES</label>
+                            <textarea class="form-control" name="transactionBytes" id="parse_transaction_transaction_bytes" rows="4" placeholder="Transaction Bytes" data-i18n="[placeholder]transaction_bytes"></textarea>
+                        </div>
+                        <input type="hidden" name="request_type" value="parseTransaction" />
+                        <div id="parse_transaction_output" class="output" style="max-height:350px;overflow:auto">
+                            <table class="table table-striped output_table" id="parse_transaction_output_table" style="margin-bottom:0;table-layout:fixed">
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="transaction_operations_modal_calculate_full_hash" class="tab_content" style="display:none">
+                        <form role="form" id="calculate_full_hash_form" autocomplete="off">
+                        <div class="callout callout-danger error_message" style="display:none"></div>
+                        <div class="form-group">
+                            <label for="calculate_full_hash_unsigned_transaction_bytes" data-i18n="unsigned_transaction_bytes">UNSIGNED TRANSACTION BYTES</label>
+                            <textarea class="form-control" name="unsignedTransactionBytes" id="calculate_full_hash_unsigned_transaction_bytes" rows="4" placeholder="Unsigned Transaction Bytes" data-i18n="[placeholder]unsigned_transaction_bytes"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="calculate_full_hash_signature_hash" data-i18n="signature_hash">SIGNATURE HASH</label>
+                            <textarea class="form-control" name="signatureHash" id="calculate_full_hash_signature_hash" rows="1" placeholder="Signature Hash" data-i18n="[placeholder]signature_hash"></textarea>
+                        </div>
+                        <input type="hidden" name="request_type" value="calculateFullHash" />
+                        <div id="calculate_full_hash_output" class="output" style="max-height:350px;overflow:auto">
+                            <table class="table table-striped output_table" id="calculate_full_hash_output_table" style="margin-bottom:0;table-layout:fixed">
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="section-modal-button">
+                <button type="button" class="btn btn-primary modal-button last" id="transaction_operations_modal_button" data-loading-text="Submitting..." data-i18n="submit;[data-loading-text]submitting">Submit</button>
+                <button type="button" class="btn btn-default modal-button" data-dismiss="modal" data-i18n="cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

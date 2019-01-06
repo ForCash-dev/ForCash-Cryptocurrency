@@ -1,0 +1,55 @@
+<header class="subheader">
+    <div class="subheader-container">
+
+        <div class="rounded-bubble-container rounded-color-dark-orange">
+            <i class="fa fa-user"></i>
+            <a data-target="#account_details_modal" data-toggle="modal"
+               href="#">
+                <div style="display: inline-block;" id="account_id">
+
+                </div>
+            </a>
+        </div>
+
+        <div class="rounded-bubble-container rounded-color-dark-orange">
+            <a href="#" id="account_name" data-toggle="modal" data-target="#account_info_modal" data-i18n="no_name_set"></a>
+        </div>
+
+        <div class="rounded-bubble-container rounded-color-black rounded-bubble-left-margin">
+            <a data-target="#account_details_modal" data-toggle="modal" href="#">
+                <span>Balance:</span>
+
+                <span style="margin-bottom: 0; display: inline-block;" id="sideBalance">
+                    <span id="account_balance_sidebar" class="loading_dots">
+                        <span>.</span><span>.</span><span>.</span>
+                    </span>
+                </span>
+
+                <span>FCH</span>
+            </a>
+        </div>
+
+        <div style="float: right;">
+            <a id="connected_indicator" class="goto-page rounded-bubble-container" href="#" data-page="peers">
+                <i class="fa fa-check"></i>
+
+                <span data-18n="connected"> </span>
+            </a>
+
+            <a id="forging_indicator" href="#" data-placement="bottom"
+               class="rounded-bubble-container rounded-bubble-left-margin">
+                <i class="fa fa-check"></i>
+
+                <span data-18n="forging"></span>
+            </a>
+
+            <a href="#" data-toggle="modal" data-target="#nrs_modal"
+               class="rounded-bubble-container rounded-color-black rounded-bubble-left-margin">
+                <span data-i18n="client_version">Client version:</span>
+                <span id="nrs_version" class="loading_dots"><span>.</span><span>.</span><span>.</span></span>
+
+                <span style="display: none; background-color: #333333; border: none !important; color: #ed5c5d; text-shadow: none; margin-left: 10px; padding: 0;" class="label label-danger" id="nrs_update"></span>
+            </a>
+        </div>
+    </div>
+</header>

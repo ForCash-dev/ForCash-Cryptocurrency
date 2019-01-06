@@ -1,0 +1,6 @@
+/forcash_db
+/classes/
+/*.log
+/*.log.*
+/html/doc/*
+/html/**/*.gz

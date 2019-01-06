@@ -1,0 +1,314 @@
+.lockscreen {
+    background: #3E7DC2;
+}
+
+.lockscreen-flex-container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lockscreen-flex-items {
+    text-align: center;
+    min-width: 33%;
+}
+
+.lockscreen-flex-items > div {
+    max-width: 500px;
+    margin: auto;
+}
+
+.lockscreen-flex-items img.logo {
+    margin-bottom: 10px;
+    height: 60px;
+}
+
+.lockscreen-flex-items input[type=submit],
+.lockscreen-flex-items button {
+    width: 100%;
+    border: none;
+}
+
+.lockscreen-flex-items i.fa {
+    margin-right: 5px;
+}
+
+.lockscreen-flex-items input[type=submit],
+.lockscreen-flex-items button {
+    font-weight: bold;
+}
+
+.lockscreen .rounded {
+    position: relative;
+
+    margin-bottom: 13px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px #4F4F4F;
+
+    font-size: 20px;
+}
+
+.lockscreen .rounded-background-white {
+    background-color: white;
+    color: #4F4F4F;
+    z-index: 2000;
+}
+
+.lockscreen .rounded-background-green {
+    background-color: #009514;
+    color: white;
+}
+
+.lockscreen .rounded-background-orange {
+    background-color: #EB7957;
+    color: white;
+}
+
+.lockscreen .rounded-background-grey {
+    background-color: #D2DBD7;
+    color: #4F4F4F;
+}
+
+.lockscreen #account_phrase_generator_panel {
+    display: none;
+    max-width: 60%;
+    font-size: inherit;
+    margin: auto;
+}
+
+#account_phrase_generator_panel p {
+    text-align: left;
+    font-weight: bold;
+}
+
+#account_phrase_generator_panel a.registration-link {
+    display: block;
+    text-align: left;
+    color: #EB7957;
+    margin-bottom: 10px;
+}
+
+.lockscreen .rounded-background-grey span,
+.lockscreen .rounded-background-grey i {
+    position: absolute;
+    bottom: 0;
+}
+
+.lockscreen .rounded-large-container {
+    height: 50px;
+}
+
+.lockscreen .rounded-middle-container {
+    height: 40px;
+}
+
+.lockscreen .rounded-small-container {
+    margin: 0 10px 25px;
+    position: relative;
+    height: 35px;
+    font-size: 15px;
+}
+
+.lockscreen #remember-passphrase-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    top: -15px;
+
+    font-size: 14px;
+}
+
+.lockscreen #remember-passphrase-container label {
+    margin-bottom: 0 !important;
+}
+
+.lockscreen-bottom-info {
+    text-align: left;
+    border-radius: 10px;
+}
+
+
+
+/* User image */
+.lockscreen-item > .lockscreen-image {
+    position: absolute;
+    left: -10px;
+    top: -30px;
+    background: #fff;
+    padding: 10px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.lockscreen-item > .lockscreen-image > img {
+    width: 70px;
+    height: 70px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/* Contains the password input and the login button */
+
+
+#lockscreen #title {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.lockscreen-item > .lockscreen-credentials input {
+    border: 0 !important;
+}
+
+.lockscreen-item > .lockscreen-credentials .btn {
+    background-color: #fff;
+    border: 0;
+}
+
+.lockscreen-credentials .input-group-btn {
+    height: 34px;
+}
+
+.lockscreen header, .lockscreen #content {
+    display: none !important;
+}
+
+.lockscreen #downloading_blockchain {
+    display: none !important;
+}
+
+#lockscreen {
+    height: 100%;
+    overflow: auto;
+}
+
+.lockscreen-widget {
+    margin: 5px 0;
+    border: 0;
+    vertical-align: top;
+}
+
+.lockscreen-credentials #login_account {
+    min-width: 256px;
+    max-width: 320px;
+    width: 100%;
+}
+
+.lockscreen-credentials .dropdown-menu a {
+    height: 24px;
+    padding: 3px 30px 0px 15px;
+}
+
+.lockscreen-credentials .dropdown-menu button.close {
+    padding: 0 5px 0 0;
+    margin: -22px 0 0 0;
+}
+
+@media (max-height: 400px) {
+    /* When mobile keyboard is displayed. Hide logo. */
+    html.lockscreen body {
+        margin-top: 22px
+    }
+
+    #registration_link {
+        margin-top: 10px
+    }
+}
+
+.lockscreen-bar {
+    font-size: 12px;
+}
+
+.lockscreen-flags {
+    display: inline-block;
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+.lockscreen-back-button {
+    width: 30px;
+    background-color: rgb(169, 169, 169) !important;
+    height: 34px !important;
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+    border-right: 0;
+}
+
+#login_panel #remember_me_container label,
+#lockscreen_active_plugins_warning label {
+    opacity: 0.53;
+}
+
+#login_panel #remember_me_container label:hover,
+#lockscreen_active_plugins_warning label:hover {
+    opacity: 1.0;
+}
+
+/* Hide default HTML checkbox */
+.switch {
+    transform: scale(0.8, 0.8);
+}
+
+.lockscreen .switch {
+    margin: 1px 4px 0 0;
+}
+
+.switch input {
+    display: none;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #4F4F4F;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #009514;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #009514;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 17px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}

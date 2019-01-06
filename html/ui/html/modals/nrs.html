@@ -1,0 +1,562 @@
+<div class="modal fade" id="nrs_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-wide">
+        <div class="modal-content">
+            <button type="button" class="close modal-button-close" data-dismiss="modal" aria-hidden="true">&times;
+            </button>
+
+            <div class="section-modal-header">
+                <h1 class="section-modal-title" data-i18n="nrs_update">Update</h1>
+            </div>
+
+            <div class="modal-body">
+                <div style="margin-bottom: 25px" id="nrs_modal_update">
+                    <div id="nrs_update_explanation" class="nrs_message">
+                        <span id="nrs_update_explanation_blockchain_sync" data-i18n="update_blockchain_downloading">The blockchain is still downloading, check again after it's up to date.</span>
+                        <span id="nrs_update_explanation_wait" data-i18n="checking_for_updates">Checking for updates...</span>
+                        <span id="nrs_update_explanation_testnet" data-i18n="update_testnet">NRS cannot be updated whilst connected to the testnet.</span>
+                        <span id="nrs_update_explanation_up_to_date" data-i18n="update_up_to_date">You have the latest release already. There is no need to update.</span>
+                        <span id="nrs_update_explanation_new_release">
+                            <span data-i18n="update_available">A new NRS release is available. It is recommended that you update.</span><br/><br/>
+                            <button style="font-size: 14px" type="button" class="btn btn-success ignore" onclick="NRS.downloadClientUpdate()">
+                                <span data-i18n="download_nrs">Download NRS</span>
+                                <span class="nrs_new_version_nr">
+
+                                </span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-modal-button">
+                <button style="float: right; margin-right: 25px;" type="button" class="btn btn-default modal-button"
+                        data-dismiss="modal" data-i18n="cancel">Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="account_info_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close modal-button-close" data-dismiss="modal" aria-hidden="true">&times;
+            </button>
+
+            <div class="section-modal-header">
+                <h1 class="section-modal-title" data-i18n="account_info">Account Info</h1>
+            </div>
+
+            <div class="modal-body">
+                <form role="form" autocomplete="off">
+                    <div class="callout callout-danger error_message" style="display:none"></div>
+                    <div class="form-group">
+                        <label for="account_info_name" data-i18n="name">NAME</label>
+                        <input type="text" class="form-control" name="name" id="account_info_name"
+                               placeholder="Your Name" data-i18n="[placeholder]your_name" tabindex="1"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="account_info_description" data-i18n="description">DESCRIPTION</label>
+                        <textarea class="form-control" placeholder="Optional" data-i18n="[placeholder]optional"
+                                  id="account_info_description" name="description" rows="4"
+                                  tabindex="2"></textarea>
+                    </div>
+                    <div data-replace-with-modal-template="secret_phrase_modal_template"></div>
+                    <div data-replace-with-modal-template="advanced_modal_template"></div>
+
+                    <input type="hidden" name="request_type" value="setAccountInfo"/>
+                </form>
+            </div>
+            <div class="section-modal-button has-advanced-options">
+                <div class="display_advanced_options advanced_info">
+                    <strong data-i18n="fee">Fee</strong>: <span class="advanced_fee">0.01 FCH</span> - <a href="#"
+                                                                                                          data-i18n="advanced">advanced</a>
+                    <span style="font-size: 12px; display: block;"> (min. 0.01 FCH)</span>
+                </div>
+                <button style="float: right; margin-right: 25px;" type="button" class="btn btn-primary modal-button"
+                        data-loading-text="Submitting..." data-i18n="update_account_info;[data-loading-text]submitting">
+                    Update Account Info
+                </button>
+                <button style="float: right; margin-right: 5px;" type="button" class="btn btn-default modal-button"
+                        data-dismiss="modal" data-i18n="cancel">Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="account_details_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close modal-button-close" data-dismiss="modal" aria-hidden="true">&times;
+            </button>
+
+            <div class="section-modal-header">
+                <h1 class="section-modal-title" data-i18n="account_details">Account Details</h1>
+            </div>
+
+            <div class="modal-body">
+                <div class="btn-group">
+                    <button type="button" class="in-page rounded dropdown-toggle" data-toggle="dropdown">
+                        <span class="text" data-i18n="account_details">Account Details</span> <span
+                            class="caret"></span>
+                    </button>
+
+                    <ul class="nav modal-nav dropdown-menu" role="menu">
+                        <li data-tab="balance">
+                            <button class="in-page rounded" href="#" data-type="">
+                                <span data-i18n="account_details">Account Details</span>
+                            </button>
+                        </li>
+                        <li data-tab="leasing">
+                            <button class="in-page rounded" href="#" data-type="forged_blocks">
+                                <span data-i18n="account_leasing">Account Leasing</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="account_details_modal_balance" class="account_details_modal_content" style="display:none">
+                    <div class="callout callout-danger" id="account_balance_warning" style="display:none"></div>
+
+                    <table class="table table-striped" id="account_balance_table" style="table-layout:fixed;">
+                        <tbody class="modal-tbody">
+                        <tr>
+                            <td style="font-weight: bold;width:180px;"><span data-i18n="account_id">Account ID</span>:
+                            </td>
+                            <td><span id="account_balance_account_rs"></span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;width:180px;"><span data-i18n="numeric_account_id">Numeric Account ID</span>:
+                            </td>
+                            <td><span id="account_balance_account"></span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold"><span data-i18n="balance">Balance</span>:</td>
+                            <td><span id="account_balance_balance"></span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold"><span data-i18n="available_balance">Available Balance</span>:
+                            </td>
+                            <td><span id="account_balance_unconfirmed_balance"></span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold"><span data-i18n="guaranteed_balance">Guaranteed Balance</span>:
+                            </td>
+                            <td><span id="account_balance_guaranteed_balance"></span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold"><span data-i18n="effective_balance">Effective Balance</span>:
+                            </td>
+                            <td><span id="account_balance_effective_balance"></span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold"><span data-i18n="forged_balance">Forged Balance</span>:</td>
+                            <td><span id="account_balance_forged_balance"></span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold"><span data-i18n="public_key">Public Key</span>:</td>
+                            <td><span id="account_balance_public_key"
+                                      style="word-break:break-all;word-wrap: break-word;"></span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold"><span data-i18n="account_qr_code">Account QR Code</span>:</td>
+                            <td>
+                                <div id="account_details_modal_qr_code"></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="account_details_modal_leasing" class="account_details_modal_content" style="display:none">
+                    <div id="account_leasing_status" class="nrs_message" style="display:none"></div>
+                    <div id="account_lessor_container" style="display:none;max-height:350px;overflow:auto;">
+                        <table class="table table-striped" id="account_lessor_table" style="margin-bottom:0">
+                            <thead>
+                            <tr>
+                                <th data-i18n="lessor">Lessor</th>
+                                <th data-i18n="balance">Balance</th>
+                                <th data-i18n="blocks_left_no_param">Blocks Left</th>
+                                <th data-i18n="next_lessee">Next Lessee</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="padding-top:10px"><a href="#" data-toggle="modal" data-target="#lease_balance_modal"
+                                                     data-i18n="lease_balance_to_account">Lease your balance to another
+                        account.</a></div>
+                </div>
+            </div>
+            <div class="section-modal-button">
+                <button style="float: right; margin-right: 25px;" type="button" class="btn btn-default modal-button"
+                        data-dismiss="modal" data-i18n="close">Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-no-hide" id="token_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close modal-button-close" data-dismiss="modal" aria-hidden="true">&times;
+            </button>
+
+            <div class="section-modal-header">
+                <h1 class="section-modal-title">FCH Token Generation / Validation</h1>
+            </div>
+
+            <div class="modal-body">
+                <div class="btn-group">
+                    <button type="button" class="in-page rounded dropdown-toggle" data-toggle="dropdown">
+                        <span class="text" data-i18n="generate_token">Generate Token</span> <span
+                            class="caret"></span>
+                    </button>
+
+                    <ul class="nav modal-nav dropdown-menu" role="menu">
+                        <li data-tab="generate_token">
+                            <button class="in-page rounded" href="#">
+                                <span data-i18n="generate_token">Generate Token</span>
+                            </button>
+                        </li>
+                        <li data-tab="validate_token">
+                            <button class="in-page rounded" href="#">
+                                <span data-i18n="validate_token">Validate Token</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="token_modal_generate_token" class="token_modal_content" style="display:none">
+                    <form role="form" id="generate_token_form" autocomplete="off">
+                        <div class="callout callout-danger remote_warning" style="display:none"
+                             data-i18n="[html]passphrase_remote_warning"><strong>Warning</strong>: Your pass phrase will
+                            be sent to the server!
+                        </div>
+                        <div class="callout callout-danger error_message" style="display:none"></div>
+                        <div class="callout callout-info" id="generate_token_output" style="display:none;"></div>
+                        <div class="form-group">
+                            <label for="generate_token_data" data-i18n="data">DATA</label>
+                            <textarea class="form-control" name="website" id="generate_token_data"
+                                      placeholder="Website or Text" data-i18n="[placeholder]website_or_text"
+                                      tabindex="1" rows="3"></textarea>
+                        </div>
+                        <input type="hidden" name="request_type" value="generateToken"/>
+                        <div class="form-group secret_phrase">
+                            <label for="generate_token_password" data-i18n="passphrase">PASSPHRASE</label>
+                            <input type="password" name="secretPhrase" id="generate_token_password" class="form-control"
+                                   placeholder="" tabindex="5">
+                        </div>
+                    </form>
+                </div>
+
+                <div id="token_modal_validate_token" class="token_modal_content" style="display:none">
+                    <form role="form" id="validate_token_form" autocomplete="off">
+                        <div class="callout callout-danger error_message" style="display:none"></div>
+                        <div class="callout callout-info" id="decode_token_output" style="display:none;"></div>
+                        <div class="form-group">
+                            <label for="decode_token_data" data-i18n="data">DATA</label>
+                            <textarea type="text" class="form-control" name="website" id="decode_token_data"
+                                      placeholder="Website or Text" data-i18n="[placeholder]website_or_text"
+                                      tabindex="1" rows="3"></textarea>
+                        </div>
+                        <input type="hidden" name="request_type" value="decodeToken"/>
+                        <div class="form-group">
+                            <label for="decode_token_token" data-i18n="token">TOKEN</label>
+                            <input type="text" class="form-control" name="token" id="decode_token_token"
+                                   placeholder="Token" data-i18n="[placeholder]token" tabindex="2" value=""/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="section-modal-button">
+                <button type="button" class="btn btn-primary modal-button last" data-loading-text="Submitting..."
+                        id="token_modal_button" data-i18n="generate">Generate
+                </button>
+                <button type="button" class="btn btn-default modal-button" data-dismiss="modal" data-i18n="cancel">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="block_info_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-wide">
+        <div class="modal-content">
+            <button type="button" class="close modal-button-close" data-dismiss="modal" aria-hidden="true">&times;
+            </button>
+
+            <div class="section-modal-header">
+                <h1 class="section-modal-title" data-i18n="block_info">Block Info</h1>
+                <strong><span data-i18n="block_number">Block no. </span><span class="section-modal-description"
+                                                                              id="block_info_modal_block"></span></strong>
+            </div>
+
+            <div class="modal-body">
+                <div class="btn-group">
+                    <button type="button" class="in-page rounded dropdown-toggle" data-toggle="dropdown">
+                        <span class="text" data-i18n="transactions">Transactions</span> <span
+                            class="caret"></span>
+                    </button>
+
+                    <ul class="nav modal-nav dropdown-menu" role="menu">
+                        <li data-tab="block_info_transactions_tab">
+                            <button class="in-page rounded" href="#">
+                                <span data-i18n="transactions">Transactions</span>
+                            </button>
+                        </li>
+                        <li data-tab="block_info_details_tab">
+                            <button class="in-page rounded" href="#">
+                                <span data-i18n="block_details">Block Details</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tabbable">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="block_info_transactions_tab"
+                             style="max-height:350px;overflow:auto;">
+                            <table class="table table-striped" id="block_info_transactions_table"
+                                   style="margin-bottom:0">
+                                <thead>
+                                <tr>
+                                    <th data-i18n="date">Date</th>
+                                    <th data-i18n="amount">Amount</th>
+                                    <th data-i18n="fee">Fee</th>
+                                    <th data-i18n="to">To</th>
+                                    <th data-i18n="from">From</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                            <div id="block_info_transactions_none" style="font-weight: bold; display:none;"
+                                 data-i18n="no_transactions_in_block">No transactions in this block.
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="block_info_details_tab" style="max-height:350px;overflow:auto;">
+                            <table class="table table-striped" id="block_info_details_table" style="margin-bottom:0">
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-modal-button">
+                <button style="float: right; margin-right: 25px;" type="button" class="btn btn-default modal-button"
+                        data-dismiss="modal" data-i18n="close">Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="user_info_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-wider">
+        <div class="modal-content">
+            <button type="button" class="close modal-button-close" data-dismiss="modal" aria-hidden="true">&times;
+            </button>
+
+            <div class="section-modal-header">
+                <h1 class="section-modal-title" data-i18n="account_info">Account Info</h1>
+                <strong>
+                    The account <span id="user_info_modal_account_name_container">named <span
+                        class="section-modal-description" id="user_info_modal_account_name"
+                        style="font-weight:bold"></span></span> <span class="section-modal-description">(<span
+                        id="user_info_modal_account"></span>)</span> has a balance of
+                    <strong class="section-modal-description"><span
+                            id="user_info_modal_account_balance"></span></strong>
+                </strong>
+            </div>
+
+            <div class="modal-body">
+                <div class="btn-group">
+                    <button type="button" class="in-page rounded dropdown-toggle" data-toggle="dropdown">
+                        <span class="text" data-i18n="transactions">Transactions</span> <span
+                            class="caret"></span>
+                    </button>
+
+                    <ul class="nav modal-nav dropdown-menu" role="menu">
+                        <li data-tab="transactions">
+                            <button class="in-page rounded" href="#">
+                                <span data-i18n="transactions">Transactions</span>
+                            </button>
+                        </li>
+                        <li data-tab="actions">
+                            <button class="in-page rounded" href="#">
+                                <span data-i18n="actions">Actions Details</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="data-container data-loading user_info_modal_content" id="user_info_modal_transactions"
+                     style="display:none;max-height:350px;overflow:auto;">
+                    <table class="table table-striped" id="user_info_modal_transactions_table">
+                        <thead>
+                        <tr>
+                            <th data-i18n="date">Date</th>
+                            <th data-i18n="type">Type</th>
+                            <th data-i18n="amount">Amount</th>
+                            <th data-i18n="fee">Fee</th>
+                            <th data-i18n="account">Account</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32"
+                                                             height="32"/></div>
+                    <div class="data-empty-container" style="padding-top:10px" data-i18n="user_no_transactions">This
+                        user has no transactions.
+                    </div>
+                </div>
+
+                <div class="data-container data-loading user_info_modal_content" id="user_info_modal_aliases"
+                     style="display:none;max-height:350px;overflow:auto;">
+                    <table class="table table-striped" id="user_info_modal_aliases_table">
+                        <thead>
+                        <tr>
+                            <th data-i18n="alias">Alias</th>
+                            <th data-i18n="uri">URI</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32"
+                                                             height="32"/></div>
+                    <div class="data-empty-container" style="padding-top:10px" data-i18n="user_no_aliases">This user has
+                        no aliases.
+                    </div>
+                </div>
+
+                <div class="data-container data-loading user_info_modal_content" id="user_info_modal_assets"
+                     style="display:none;max-height:350px;overflow:auto;">
+                    <table class="table table-striped" id="user_info_modal_assets_table">
+                        <thead>
+                        <tr>
+                            <th data-i18n="asset">Asset</th>
+                            <th data-i18n="quantity">Quantity</th>
+                            <th data-i18n="total_available">Total Available</th>
+                            <th data-i18n="percentage">Percentage</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32"
+                                                             height="32"/></div>
+                </div>
+
+                <div class="data-container data-loading user_info_modal_content" id="user_info_modal_trade_history"
+                     style="display:none;max-height:350px;overflow:auto;">
+                    <table class="table table-striped" id="user_info_modal_trade_history_table">
+                        <thead>
+                        <tr>
+                            <th data-i18n="asset">Asset</th>
+                            <th data-i18n="date">Date</th>
+                            <th data-i18n="type">Type</th>
+                            <th data-i18n="quantity">Quantity</th>
+                            <th data-i18n="price">Price</th>
+                            <th data-i18n="total">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32"
+                                                             height="32"/></div>
+                    <div class="data-empty-container" style="padding-top:10px" data-i18n="user_no_trade_history">This
+                        user has no trade history.
+                    </div>
+                </div>
+
+                <div class="data-container data-loading user_info_modal_content" id="user_info_modal_currencies"
+                     style="display:none;max-height:350px;overflow:auto;">
+                    <table class="table table-striped" id="user_info_modal_currencies_table">
+                        <thead>
+                        <tr>
+                            <th data-i18n="code">Code</th>
+                            <th data-i18n="name">Name</th>
+                            <th data-i18n="units">Units</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32"
+                                                             height="32"/></div>
+                    <div class="data-empty-container" style="padding-top:10px" data-i18n="user_no_currencies">This user
+                        has no currencies.
+                    </div>
+                </div>
+
+                <div class="data-container data-loading user_info_modal_content" id="user_info_modal_marketplace"
+                     style="display:none;max-height:350px;overflow:auto;">
+                    <table class="table table-striped" id="user_info_modal_marketplace_table">
+                        <thead>
+                        <tr>
+                            <th data-i18n="item">Item</th>
+                            <th data-i18n="price">Price</th>
+                            <th data-i18n="qty">QTY</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <div class="data-loading-container"><img src="img/loading_indicator.gif" alt="Loading..." width="32"
+                                                             height="32"/></div>
+                    <div class="data-empty-container" style="padding-top:10px" data-i18n="user_no_marketplace_listings">
+                        This user has no marketplace listings.
+                    </div>
+                </div>
+
+                <div class="user_info_modal_content data-never-loading" id="user_info_modal_description"
+                     style="display:none;"></div>
+
+                <div class="user_info_modal_content data-never-loading" id="user_info_modal_actions"
+                     style="display:none;">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-6">
+                            <button type="button" class="goto-page btn btn-default btn-lg btn-block"
+                                    data-page="send_coins" data-account="FF" data-i18n="send_fch">Send FCH
+                            </button>
+
+                            <button type="button" class="goto-page btn btn-default btn-lg btn-block"
+                                    data-page="send_message" data-i18n="send_a_message">Send a Message
+                            </button>
+
+                            <button type="button" id="user_info_modal_add_as_contact"
+                                    class="btn btn-default btn-lg btn-block" data-toggle="modal"
+                                    data-target="#add_contact_modal" data-account="" data-i18n="add_as_contact">Add as
+                                Contact
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="section-modal-button">
+                <button style="float: right; margin-right: 25px;" class="btn btn-default modal-button last"
+                        data-dismiss="modal" data-i18n="close">Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

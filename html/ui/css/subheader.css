@@ -1,0 +1,70 @@
+body > .subheader {
+    background-color: #EB7957;
+    height: 50px;
+    z-index: 1015;
+
+    margin-top: 80px;
+
+    padding-left: 25px;
+    padding-right: 20px;
+
+    box-shadow: 0 3px 5px grey;
+}
+
+.subheader > .subheader-container {
+    top: 50%;
+    position: relative;
+    margin: 0;
+    transform: translateY(-50%);
+}
+
+.subheader a,
+.subheader i {
+    color: white;
+
+    text-shadow: 0 1px 1px grey;
+}
+
+.rounded-bubble-container {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 2px 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.rounded-bubble-left-margin {
+    margin-left: 5px;
+}
+
+.rounded-color-dark-orange {
+    background-color: #B15B42;;
+}
+
+.rounded-color-black {
+    background-color: #333333;
+}
+
+.rounded-color-green {
+    background-color: #009514;
+}
+
+.rounded-bubble-container i {
+    margin-right: 3px;
+}
+
+#connected_indicator i,
+#forging_indicator i {
+    color: white;
+}
+
+#connected_indicator,
+#forging_indicator {
+    background-color: grey !important;
+}
+
+#forging_indicator.forging,
+#connected_indicator.connected {
+    background-color: #009514 !important;
+}

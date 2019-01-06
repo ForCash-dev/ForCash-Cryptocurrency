@@ -1,0 +1,109 @@
+<div id="settings_page" class="page">
+    <div class="section-title">
+        <i class="fa fa-globe"></i>
+        <h1 data-i18n="settings">Settings</h1>
+    </div>
+
+    <section class="content">
+        <div class="table-title" data-i18n="general">General</div>
+        <div class="table box" id="general_settings">
+            <form role="form" autocomplete="off">
+                <div class="box-body">
+                    <label for="settings_language" data-i18n="language">Language</label>
+                </span>
+                    <div class="drop-menu">
+                        <div class="select">
+                            <span id="settings_language"></span>
+                            <i class="fa fa-chevron-down"></i>
+                        </div>
+                        <ul id="settings_language_values" class="dropeddown">
+                            <li id="en">English</li>
+                            <li id="cs">Čeština</li>
+                            <li id="es">Español</li>
+                            <li id="pl">Polski</li>
+                        </ul>
+                    </div>
+
+                    <label for="settings_itemsPerPage" data-i18n="items_per_page">Items to show per page</label>
+                    <div class="drop-menu">
+                        <div class="select">
+                            <span id="settings_itemsPerPage"></span>
+                            <i class="fa fa-chevron-down"></i>
+                        </div>
+                        <ul id="settings_itemsPerPage_values" class="dropeddown">
+                            <li id="15">15</li>
+                            <li id="30">30</li>
+                            <li id="45">45</li>
+                            <li id="60">60</li>
+                            <li id="75">75</li>
+                        </ul>
+                    </div>
+
+                    <label for="settings_hourFormat" data-i18n="hourFormat">Hour Format</label>
+                    <div class="drop-menu">
+                        <div class="select">
+                            <span id="settings_hourFormat"></span>
+                            <i class="fa fa-chevron-down"></i>
+                        </div>
+                        <ul id="settings_hourFormat_values" class="dropeddown">
+                            <li id="12h">12h</li>
+                            <li id="24h">24h</li>
+                        </ul>
+                    </div>
+
+                    <label for="settings_rememberPassphrase" data-i18n="remember_passphrase_by_default">Remember Passphrase By Default</label>
+                    <div style="margin-bottom: 5px" class="drop-menu">
+                        <div class="select">
+                            <span id="settings_rememberPassphrase"></span>
+                            <i class="fa fa-chevron-down"></i>
+                        </div>
+                        <ul id="settings_rememberPassphrase_values" class="dropeddown">
+                            <li id="yes" data-i18n="yes">Yes</li>
+                            <li id="no" data-i18n="no">No</li>
+                        </ul>
+                    </div>
+
+                    <p style="margin-bottom: 50px" class="help-block" data-i18n="remember_passphrase_by_default_help">On the login screen.</p>
+                </div>
+            </form>
+        </div>
+
+        <div class="table-title table-title-margin" data-i18n="form_warnings">Form Warnings</div>
+        <div class="table box" id="settings_box">
+            <form role="form" autocomplete="off">
+                <div class="box-body" style="padding-top:0;">
+                    <p class="help-block" data-i18n="form_warnings_help">Show a warning when an amount / fee entered is higher than specified below.</p>
+
+                    <div class="form-group">
+                        <label style="display: block" for="settings_amountWarning" data-i18n="max_amount_warning">Max Amount Warning</label>
+                        <div style="display: inline-block">
+                            <div class="input-group">
+                                <input type="text" name="amountWarning" id="settings_amountWarning" class="form-control" />
+                                <span class="input-group-addon">FCH</span>
+                            </div>
+                        </div>
+                        <i style="vertical-align: top; margin-left: 7px; margin-top: 11px;" class="fa fa-question-circle fa-lg" data-toggle="tooltip" data-placement="right" title="0.01 FCH - 100 000 FCH"></i>
+
+                        <i id="settings_amountWarningStatusIcon" class="fa fa-refresh fa-spin settings-box-input settings-box-input-icon"></i>
+                        <div id="settings_amountWarningStatusText" class="settings-box-input settings-box-input-text">Changing value...</div>
+                        <div class="settings-box-input settings-box-input-text"><strong id="settings_amountWarningStatusTextValue">ok</strong></div>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: block" for="settings_feeWarning" data-i18n="max_fee_warning">Max Fee Warning</label>
+                        <div style="display: inline-block">
+                            <div class="input-group" style="width:150px">
+                                <input type="text" name="feeWarning" id="settings_feeWarning" class="form-control" />
+                                <span class="input-group-addon">FCH</span>
+                            </div>
+                        </div>
+                        <i style="vertical-align: top; margin-left: 7px; margin-top: 11px;" class="fa fa-question-circle fa-lg" data-toggle="tooltip" data-placement="right" title="0.01 FCH - 100 000 FCH"></i>
+
+                        <i id="settings_feeWarningStatusIcon" class="fa fa-refresh fa-spin settings-box-input settings-box-input-icon"></i>
+                        <div id="settings_feeWarningStatusText" class="settings-box-input settings-box-input-text">Changing value...</div>
+                        <div class="settings-box-input settings-box-input-text"><strong id="settings_feeWarningStatusTextValue">ok</strong></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

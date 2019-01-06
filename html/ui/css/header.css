@@ -1,0 +1,146 @@
+body > .header {
+    position: absolute;
+
+    height: 80px;
+    z-index: 1040;
+
+    box-shadow: 0 1px 5px #5e5e5e;
+
+    padding-right: 20px;
+    padding-left: 20px;
+
+    background-color: #3E7DC2;
+}
+
+.header > .header-container {
+    height: 45px !important;
+    top: 50%;
+    position: relative;
+    margin: 0;
+    transform: translateY(-50%);
+}
+
+.header .logo {
+    float: left;
+
+    width: 160px;
+
+    padding: 0 5px;
+    margin-top: 5px;
+}
+
+.header-container > ul.nav {
+    display: flex;
+    float: right;
+}
+
+.header-container > ul.nav > li:last-child button {
+    margin-right: 0;
+}
+
+button.in-page,
+.header-container li button {
+    display: inline-block !important;
+
+    padding: 12px 16px;
+    margin-right: 10px;
+    border-width: 0;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    color: white;
+    background-color: #3973B2;
+}
+
+.modal-body button.in-page {
+    padding: 8px 16px;
+}
+
+button.in-page.rounded,
+.header-container li button.rounded {
+    border-radius: 10px;
+}
+
+button.in-page:hover,
+.header-container li button:hover {
+    background-color: #2D5A8B;
+}
+
+.dropdown-menu.color-orange,
+.header-container li button.color-orange {
+    background-color: #EB7957;
+}
+
+.header-container li button.color-orange:hover {
+    background-color: #B15B42;
+}
+
+
+.dropdown-menu.color-red,
+.header-container li button.color-red {
+    background-color: #FE5C61;
+}
+
+.header-container li button.color-red:hover {
+    background-color: #9D4545;
+}
+
+
+
+.header-container li i:not(.fa-caret-down) {
+    margin-right: 5px;
+}
+
+.header-container li i.fa-caret-down {
+    margin-left: 3px;
+}
+
+
+.dropdown-menu {
+    box-shadow: 2px 2px 5px grey;
+    -webkit-box-shadow: 2px 2px 5px grey;
+    -moz-box-shadow: 2px 2px 5px grey;
+    z-index: 2300;
+
+    width: 100%;
+    padding: 0;
+    border-radius: 10px;
+
+    background-color: #3973B2;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: #2D5A8B;
+    color: #f9f9f9;
+}
+
+.dropdown-menu li button.rounded {
+    border-radius: 0;
+    margin: 0 !important;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown-menu li:first-child button.rounded {
+    border-radius: 10px 10px 0 0;
+}
+
+.dropdown-menu li:last-child button.rounded {
+    border-radius: 0 0 10px 10px;
+}
+
+
+
+
+.dropdown.open button:focus {
+    background-color: #2D5A8B !important;
+}
+
+.dropdown.open button.color-orange:focus {
+    background-color: #B15B42 !important;
+}
+
+.dropdown.open button.color-red:focus {
+    background-color: #9D4545 !important;
+}
